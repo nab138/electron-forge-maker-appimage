@@ -15,7 +15,6 @@ const makerPackageName = "electron-forge-maker-appimage";
 interface AppImageForgeConfig {
   template?: string;
   chmodChromeSandbox?: string;
-  icon?: string;
 }
 
 const isIForgeResolvableMaker = (
@@ -79,12 +78,7 @@ export default class MakerAppImage extends MakerBase<MakerAppImageConfig> {
     desktopEntry += "\n";
 
     // icons don't seem to work in AppImages anyway. this is just the default taken from the old AppImage maker.
-    const iconPath = path.join(
-      dir,
-      "../..",
-      config?.icon ??
-        "node_modules/app-builder-lib/templates/icons/electron-linux"
-    );
+    const iconPath = path.join(dir, "../../src/icons/linux");
     const icons = [
       { file: `${iconPath}/16x16.png`, size: 16 },
       { file: `${iconPath}/32x32.png`, size: 32 },
